@@ -5,16 +5,31 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./css/normalize.css">
+  <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
   <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/media.style.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script src="./index.js"></script>
+  <script>
+  $( function() {
+    $( "#accordion" ).accordion({
+      collapsible: true,
+      heightStyle: "content",
+      active: false,
+    })
+  });
+  </script>
   <title>Евклид Проектные системы</title>
 </head>
 <body>
   <header class="header">
     <div class="container header__container">
-      <button class="header__btn-burger btn-header btn">
+      <button class="header__btn-burger btn-header" id="burger">
         <span class="btn-burger-line-first"></span>
         <span class="btn-burger-line-two"></span>
         <span class="btn-burger-line-third"></span>
+        <span class="btn-burger-line-four"></span>
       </button>
       <a class="header__logo-link" href="#">
         <img class="header__logo-img" src="./img/svg/logo.svg" alt="Евклид Простые решения">
@@ -22,6 +37,25 @@
       <div class="header__nav-search-wrapper">
         <nav class="header__nav">
           <ul class="header__list">
+            <li class="header__list-child">
+              <a href="#">О нас</a>
+            </li>
+            <li class="header__list-child">
+              <a href="#">Проекты</a>
+            </li>
+            <li class="header__list-child">
+              <a href="#">Этапы</a>
+            </li>
+            <li class="header__list-child">
+              <a href="#">Отзывы</a>
+            </li>
+            <li class="header__list-child">
+              <a href="#">Контакты</a>
+            </li>
+          </ul>
+        </nav>
+        <nav class="header__burger-menu">
+          <ul class="header__burger-list menu" id="menu">
             <li class="header__list-child">
               <a href="#">О нас</a>
             </li>
@@ -52,6 +86,18 @@
     <section class="hero-main-slider">
       <div class="hero-main-slider__container container">
         <div class="hero-main-slider__design-solutions">
+          <!-- Slider main container -->
+        <div class="swiper">
+          <!-- Additional required wrapper -->
+          <div class="swiper-wrapper">
+            <!-- Slides -->
+            <div class="swiper-slide swiper-slide-first"></div>
+            <div class="swiper-slide swiper-slide-second"></div>
+            <div class="swiper-slide swiper-slide-third"></div>
+          </div>
+          <!-- If we need pagination -->
+          <div class="swiper-pagination"></div>
+        </div>
           <h1 class="hero-main-slider__title">
             Проектные решения любой сложности
           </h1>
@@ -83,10 +129,7 @@
           </p>
           <div class="section-about__center-content">
             <div class="section-about__block-img section-about__blcok-child">
-                <!-- Изображение для адаптива на 320 -->
                 <div class="section-about__img"></div>
-                <!-- <img class="section-about__img" src="./img/worker.png" alt="Рабочий-высотник"> -->
-                <!-- Изображение для адаптива на 320 -->
                 <div class="section-about__wrapper">
                   <p class="section-about__block-txt">
                     Принимая во внимание показатели успешности, перспективное планирование способствует
@@ -126,175 +169,181 @@
         <h2 class="section-how-we-work__subtitle">Как мы работаем</h2>
         <ul class="section-how-we-work__list">
           <li>
-            <button class="section-how-we-work__list-btn">1 шаг</button>
+            <button class="section-how-we-work__list-btn tabs-btn" data-path="one">1 шаг</button>
           </li>
           <li>
-            <button class="section-how-we-work__list-btn">2 шаг</button>
+            <button class="section-how-we-work__list-btn tabs-btn" data-path="two">2 шаг</button>
           </li>
           <li>
-            <button class="section-how-we-work__list-btn">3 шаг</button>
+            <button class="section-how-we-work__list-btn tabs-btn" data-path="three">3 шаг</button>
           </li>
           <li>
-            <button class="section-how-we-work__list-btn">4 шаг</button>
+            <button class="section-how-we-work__list-btn tabs-btn" data-path="four">4 шаг</button>
           </li>
         </ul>
-        <div class="section-how-we-work__content-step-1">
-          <div class="section-how-we-work__text-wrapper">
-            <h3 class="text-wrapper__subtitle">Проводим консультацию</h3>
-            <p class="section-how-we-work__text-step-1">
-              Влечет за собой процесс внедрения и модернизации приоритизации разума над эмоциями.
-              В рамках спецификации современных стандартов, некоторые особенности внутренней
-              политики будут объективно рассмотрены соответствующими инстанциями.
-              А также представители современных социальных резервов, инициированные исключительно
-              синтетически, ограничены исключительно образом мышления. Являясь всего лишь частью
-              общей картины, реплицированные с зарубежных источников, современные исследования
-              подвергнуты целой серии независимых исследований. Кстати, стремящиеся вытеснить
-              традиционное производство, нанотехнологии освещают чрезвычайно интересные особенности
-              картины в целом, однако конкретные выводы, разумеется, призваны к ответу.
-            </p>
-            <div class="section-how-we-work__btn-wrapper">
-              <button class="section-how-we-work__btn-1 btn-general">Подробнее</button><button class="section-how-we-work__btn-2 btn-general">Договор</button>
+        <div class="tab-content tab-content-active" data-target="one">
+          <div class="section-how-we-work__content-step-1">
+            <div class="section-how-we-work__text-wrapper">
+              <div class="section-how-we-work__text-wrapper-step-1">
+                <h3 class="text-wrapper__subtitle">Проводим консультацию</h3>
+                <p class="section-how-we-work__text-step-1">
+                  Влечет за собой процесс внедрения и модернизации приоритизации разума над эмоциями.
+                  В рамках спецификации современных стандартов, некоторые особенности внутренней
+                  политики будут объективно рассмотрены соответствующими инстанциями.
+                  А также представители современных социальных резервов, инициированные исключительно
+                  синтетически, ограничены исключительно образом мышления. Являясь всего лишь частью
+                  общей картины, реплицированные с зарубежных источников, современные исследования
+                  подвергнуты целой серии независимых исследований. Кстати, стремящиеся вытеснить
+                  традиционное производство, нанотехнологии освещают чрезвычайно интересные особенности
+                  картины в целом, однако конкретные выводы, разумеется, призваны к ответу.
+                </p>
+              </div>
+              <div class="section-how-we-work__btn-wrapper">
+                <button class="section-how-we-work__btn-1 btn-general">Подробнее</button><button class="section-how-we-work__btn-2 btn-general">Договор</button>
+              </div>
             </div>
-          </div>
-          <div class="section-how-we-work__img-wraper">
-            <picture>
-              <source class="pic2" srcset="./img/how-we-work-1024.jpg" type="image/jpeg" media="(min-width:1250px)">
-              <source class="pic3" srcset="./img/how-we-work-1024.jpg" type="image/jpeg" media="(min-width:1018px)">
-              <source class="pic3" srcset="./img/how-we-work-768.jpg" type="image/jpeg" media="(min-width:768px)">
-              <img src="./img/how-we-work-step-1.jpg" alt="Проводим консультацию">
-            </picture>
-          </div>
-        </div>
-        <!-- hidden -->
-        <div class="section-how-we-work__content-step-2">
-          <div>
-            <h3 class="text-wrapper__subtitle">Составляем смету</h3>
-            <p class="section-how-we-work__text-step-2">
-              Внедрения и модернизации приоритизации разума над эмоциями. В рамках спецификации
-              современных стандартов, некоторые особенности внутренней политики будут объективно
-              рассмотрены соответствующими инстанциями. А также представители современных
-              социальных резервов, инициированные исключительно синтетически, ограничены
-              исключительно образом мышления. Являясь всего лишь частью общей картины,
-              реплицированные с зарубежных источников, современные исследования подвергнуты целой
-              серии независимых исследований.
-            </p>
-            <div class="section-how-we-work__btn-wrapper">
-              <button class="section-how-we-work__btn-1 btn-general">Подробнее</button><button class="section-how-we-work__btn-2 btn-general">Договор</button>
-            </div>
-          </div>
-          <div class="section-how-we-work__img-wraper">
-            <picture>
-              <source class="pic1" srcset="./img/how-we-work-step-1.jpg" type="image/jpeg" media="(min-width:1400px)">
-              <source class="pic2" srcset="./img/rectangle-18.jpg" type="image/jpeg" media="(min-width:1350px)">
-              <source class="pic3" srcset="./img/rectangle-18.jpg" type="image/jpeg" media="(min-width:927px)">
-              <img src="./img/how-we-work-step-1.jpg" alt="Проводим консультацию">
-            </picture>
-          </div>
-        </div>
-        <div class="section-how-we-work__content-step-3">
-          <div>
-            <h3 class="text-wrapper__subtitle">Привлекаем подрячиков</h3>
-            <p class="section-how-we-work__text-step-3">
-              Идейные соображения высшего порядка, а также новая модель организационной деятельности
-              требует анализа прогресса профессионального сообщества.
-              Высокий уровень вовлечения представителей целевой аудитории
-              является четким доказательством простого факта: высококачественный
-              прототип будущего проекта напрямую зависит от дальнейших направлений развития.
-              Разнообразный и богатый опыт говорит нам, что новая модель организационной
-              деятельности говорит о возможностях системы массового участия. Принимая во внимание
-              показатели успешности, постоянное информационно-пропагандистское обеспечение нашей
-              деятельности позволяет выполнить важные задания по разработке прогресса
-              профессионального сообщества.
-            </p>
-            <div class="section-how-we-work__btn-wrapper">
-              <button class="section-how-we-work__btn-1 btn-general">Подробнее</button><button class="section-how-we-work__btn-2 btn-general">Договор</button>
-            </div>
-          </div>
-          <div class="section-how-we-work__img-wraper">
-            <picture>
-              <source class="pic1" srcset="./img/how-we-work-step-1.jpg" type="image/jpeg" media="(min-width:1400px)">
-              <source class="pic2" srcset="./img/rectangle-18.jpg" type="image/jpeg" media="(min-width:1350px)">
-              <source class="pic3" srcset="./img/rectangle-18.jpg" type="image/jpeg" media="(min-width:927px)">
-              <img src="./img/how-we-work-step-1.jpg" alt="Проводим консультацию">
-            </picture>
-          </div>
-        </div>
-        <div class="section-how-we-work__content-step-4">
-          <div>
-            <h3 class="text-wrapper__subtitle">Инспектируем все этапы работы</h3>
-            <p class="section-how-we-work__text-step-4">
-              Высокий уровень вовлечения представителей целевой аудитории является четким
-              доказательством простого факта: высококачественный прототип будущего проекта
-              напрямую зависит от дальнейших направлений развития. Разнообразный и богатый
-              опыт говорит нам, что новая модель организационной деятельности говорит о
-              возможностях системы массового участия. Принимая во внимание показатели
-              успешности, постоянное информационно-пропагандистское обеспечение нашей
-              деятельности позволяет.
-            </p>
-            <div class="section-how-we-work__btn-wrapper">
-              <button class="section-how-we-work__btn-1 btn-general">Подробнее</button><button class="section-how-we-work__btn-2 btn-general">Договор</button>
-            </div>
-            </div>
-            <div class="section-how-we-work__img-wraper">
+            <div class="section-how-we-work__img-wraper-step-1">
               <picture>
-                <source class="pic1" srcset="./img/how-we-work-step-1.jpg" type="image/jpeg" media="(min-width:1400px)">
-                <source class="pic2" srcset="./img/how-we-work-1024.jpg" type="image/jpeg" media="(min-width:1350px)">
-                <source class="pic3" srcset="./img/how-we-work-1024.jpg" type="image/jpeg" media="(min-width:1017px)">
+                <source class="pic2" srcset="./img/how-we-work-1024.jpg" type="image/jpeg" media="(min-width:1250px)">
+                <source class="pic3" srcset="./img/how-we-work-1024.jpg" type="image/jpeg" media="(min-width:1018px)">
+                <source class="pic3" srcset="./img/how-we-work-768.jpg" type="image/jpeg" media="(min-width:768px)">
                 <img src="./img/how-we-work-step-1.jpg" alt="Проводим консультацию">
               </picture>
             </div>
           </div>
-        <!-- hidden -->
+        </div>
+        <div class="tab-content" data-target="two">
+          <div class="section-how-we-work__content-step-2">
+            <div class="section-how-we-work__text-wrapper">
+              <div class="section-how-we-work__text-wrapper-step-2">
+                <h3 class="text-wrapper__subtitle">Составляем смету</h3>
+                <p class="section-how-we-work__text-step-2">
+                  Внедрения и модернизации приоритизации разума над эмоциями. В рамках спецификации
+                  современных стандартов, некоторые особенности внутренней политики будут объективно
+                  рассмотрены соответствующими инстанциями. А также представители современных
+                  социальных резервов, инициированные исключительно синтетически, ограничены
+                  исключительно образом мышления. Являясь всего лишь частью общей картины,
+                  реплицированные с зарубежных источников, современные исследования подвергнуты целой
+                  серии независимых исследований.
+                </p>
+              </div>
+              <div class="section-how-we-work__btn-wrapper">
+                <button class="section-how-we-work__btn-1 btn-general">Подробнее</button><button class="section-how-we-work__btn-2 btn-general">Договор</button>
+              </div>
+            </div>
+            <div class="section-how-we-work__img-wraper-step-2">
+              <picture>
+                <source class="pic2" srcset="./img/how-we-work-step-2-1024.jpg" type="image/jpeg" media="(min-width:1250px)">
+                <source class="pic3" srcset="./img/how-we-work-step-2-1024.jpg" type="image/jpeg" media="(min-width:1018px)">
+                <source class="pic3" srcset="./img/how-we-work-step-2-768.jpg" type="image/jpeg" media="(min-width:768px)">
+                <img src="./img/how-we-work-step-2.jpg" alt="Проводим консультацию">
+              </picture>
+            </div>
+          </div>
+        </div>
+        <div class="tab-content" data-target="three">
+          <div class="section-how-we-work__content-step-3">
+            <div class="section-how-we-work__text-wrapper">
+              <div class="section-how-we-work__text-wrapper-step-3">
+                <h3 class="text-wrapper__subtitle">Привлекаем подрячиков</h3>
+                <p class="section-how-we-work__text-step-3">
+                  Идейные соображения высшего порядка, а также новая модель организационной деятельности
+                  требует анализа прогресса профессионального сообщества.
+                  Высокий уровень вовлечения представителей целевой аудитории
+                  является четким доказательством простого факта: высококачественный
+                  прототип будущего проекта напрямую зависит от дальнейших направлений развития.
+                  Разнообразный и богатый опыт говорит нам, что новая модель организационной
+                  деятельности говорит о возможностях системы массового участия. Принимая во внимание
+                  показатели успешности, постоянное информационно-пропагандистское обеспечение нашей
+                  деятельности позволяет выполнить важные задания по разработке прогресса
+                  профессионального сообщества.
+                </p>
+              </div>
+              <div class="section-how-we-work__btn-wrapper">
+                <button class="section-how-we-work__btn-1 btn-general">Подробнее</button><button class="section-how-we-work__btn-2 btn-general">Договор</button>
+              </div>
+            </div>
+            <div class="section-how-we-work__img-wraper-step-3">
+              <picture>
+                <source class="pic2" srcset="./img/how-we-work-step-3-1024.jpg" type="image/jpeg" media="(min-width:1250px)">
+                <source class="pic3" srcset="./img/how-we-work-step-3-1024.jpg" type="image/jpeg" media="(min-width:1018px)">
+                <source class="pic3" srcset="./img/how-we-work-step-3-768.jpg" type="image/jpeg" media="(min-width:768px)">
+                <img src="./img/how-we-work-step-3.jpg" alt="Проводим консультацию">
+              </picture>
+            </div>
+          </div>
+        </div>
+        <div class="tab-content" data-target="four">
+          <div class="section-how-we-work__content-step-4">
+            <div class="section-how-we-work__text-wrapper">
+              <div class="section-how-we-work__text-wrapper-step-4">
+                <h3 class="text-wrapper__subtitle">Инспектируем все этапы работы</h3>
+                <p class="section-how-we-work__text-step-4">
+                  Высокий уровень вовлечения представителей целевой аудитории является четким
+                  доказательством простого факта: высококачественный прототип будущего проекта
+                  напрямую зависит от дальнейших направлений развития. Разнообразный и богатый
+                  опыт говорит нам, что новая модель организационной деятельности говорит о
+                  возможностях системы массового участия. Принимая во внимание показатели
+                  успешности, постоянное информационно-пропагандистское обеспечение нашей
+                  деятельности позволяет.
+                </p>
+              </div>
+              <div class="section-how-we-work__btn-wrapper">
+                <button class="section-how-we-work__btn-1 btn-general">Подробнее</button><button class="section-how-we-work__btn-2 btn-general">Договор</button>
+              </div>
+            </div>
+            <div class="section-how-we-work__img-wraper-step-4">
+              <picture>
+                <source class="pic2" srcset="./img/how-we-work-step-4-1024.jpg" type="image/jpeg" media="(min-width:1250px)">
+                <source class="pic3" srcset="./img/how-we-work-step-4-1024.jpg" type="image/jpeg" media="(min-width:1018px)">
+                <source class="pic3" srcset="./img/how-we-work-step-4-768.jpg" type="image/jpeg" media="(min-width:768px)">
+                <img src="./img/how-we-work-step-4.jpg" alt="Проводим консультацию">
+              </picture>
+            </div>
+        </div>
+        </div>
       </div>
     </section>
     <section class="section-questions">
       <div class="section-questions__container  container">
-          <h2 class="section-questions__subtitles" id="about-us">
+          <h2 class="section-questions__subtitles">
             Часто задаваемые вопросы
           </h2>
-          <ul class="section-questions-wrapper">
-            <li tabindex="0">
-              <div class="section-questions-wrapper__accordion">
-                <h3 class="accordion-subtitle">
-                  Из чего формируется конечная стоимость проекта?
-                </h3>
-                <span class="accordion-img">
-                  <svg width="50" height="50" viewbox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <ellipse cx="25" cy="25" rx="25" ry="25" fill="#ECECEC"/>
-                  </svg>
-                </span>
-              </div>
-              <div class="section-questions-wrapper__text-content">
-                <p>
-                  Являясь всего лишь частью общей картины, непосредственные участники технического прогресса
-                  призывают нас к новым свершениям, которые, в свою очередь, должны быть своевременно
-                  верифицированы. Но высококачественный прототип будущего проекта является качественно новой
-                  ступенью первоочередных требований. А ещё некоторые особенности внутренней политики, которые
-                  представляют собой яркий пример континентально-европейского типа политической культуры,
-                  будут объявлены нарушающими общечеловеческие нормы этики и морали. И нет сомнений, что явные
-                  признаки победы институционализации призывают нас к новым свершениям, которые, в свою очередь,
-                  должны быть указаны как претенденты на роль ключевых факторов.
-                </p>
-                <p>
-                  Приятно, граждане, наблюдать, как некоторые особенности внутренней политики могут быть
-                  призваны к ответу. Явные признаки победы институционализации набирают популярность среди
-                  определенных слоев населения, а значит, должны быть объединены в целые кластеры себе подобных.
-                  Банальные, но неопровержимые выводы, а также многие известные личности призывают нас к новым
-                  свершениям, которые, в свою очередь, должны быть представлены в исключительно положительном
-                  свете.
-                </p>
-              </div>
-            </li>
+          <ul class="section-questions-wrapper" id="accordion">
+              <li class="section-questions-wrapper__accordion-item" tabindex="0">
+                <div class="section-questions-wrapper__accordion">
+                  <h3 class="accordion-subtitle">
+                    Из чего формируется конечная стоимость проекта?
+                  </h3>
+                  <span class="accordion-img"></span>
+                </div>
+                <div class="section-questions-wrapper__text-content">
+                  <p>
+                    Являясь всего лишь частью общей картины, непосредственные участники технического прогресса
+                    призывают нас к новым свершениям, которые, в свою очередь, должны быть своевременно
+                    верифицированы. Но высококачественный прототип будущего проекта является качественно новой
+                    ступенью первоочередных требований. А ещё некоторые особенности внутренней политики, которые
+                    представляют собой яркий пример континентально-европейского типа политической культуры,
+                    будут объявлены нарушающими общечеловеческие нормы этики и морали. И нет сомнений, что явные
+                    признаки победы институционализации призывают нас к новым свершениям, которые, в свою очередь,
+                    должны быть указаны как претенденты на роль ключевых факторов.
+                  </p>
+                  <p>
+                    Приятно, граждане, наблюдать, как некоторые особенности внутренней политики могут быть
+                    призваны к ответу. Явные признаки победы институционализации набирают популярность среди
+                    определенных слоев населения, а значит, должны быть объединены в целые кластеры себе подобных.
+                    Банальные, но неопровержимые выводы, а также многие известные личности призывают нас к новым
+                    свершениям, которые, в свою очередь, должны быть представлены в исключительно положительном
+                    свете.
+                  </p>
+                </div>
+              </li>
             <li tabindex="0">
               <div class="section-questions-wrapper__accordion">
                 <h3 class="accordion-subtitle">
                   У меня есть свой проект. Сможем ли мы его доработать <span>/</span> реализовать?
                 </h3>
-                <span class="accordion-img">
-                  <svg width="50" height="50" viewbox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <ellipse cx="25" cy="25" rx="25" ry="25" fill="#ECECEC"/>
-                  </svg>
-                </span>
+                <span class="accordion-img"></span>
               </div>
               <div class="section-questions-wrapper__text-content"></div>
             </li>
@@ -303,11 +352,7 @@
                 <h3 class="accordion-subtitle">
                   Я выбираю между разными компаниями. В чём ваше отличие?
                 </h3>
-                <span class="accordion-img">
-                  <svg width="50" height="50" viewbox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <ellipse cx="25" cy="25" rx="25" ry="25" fill="#ECECEC"/>
-                  </svg>
-                </span>
+                <span class="accordion-img"></span>
               </div>
               <div class="section-questions-wrapper__text-content"></div>
             </li>
@@ -316,11 +361,7 @@
                 <h3 class="accordion-subtitle">
                   Могу ли я делегировать вам работу <span>/</span> согласование с подрядчиком <span>/</span> организацией?
                 </h3>
-                <span class="accordion-img">
-                  <svg width="50" height="50" viewbox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <ellipse cx="25" cy="25" rx="25" ry="25" fill="#ECECEC"/>
-                  </svg>
-                </span>
+                <span class="accordion-img"></span>
               </div>
               <div class="section-questions-wrapper__text-content"></div>
             </li>
@@ -329,11 +370,7 @@
                 <h3 class="accordion-subtitle">
                   Могу ли я вернуть деньги на каком либо из этапов работ?
                 </h3>
-                <span class="accordion-img">
-                  <svg width="50" height="50" viewbox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <ellipse cx="25" cy="25" rx="25" ry="25" fill="#ECECEC"/>
-                  </svg>
-                </span>
+                <span class="accordion-img"></span>
               </div>
               <div class="section-questions-wrapper__text-content"></div>
             </li>
@@ -426,6 +463,21 @@
         </p>
       </div>
     </footer>
+    <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+    <script>
+      const swiper = new Swiper('.swiper', {
+        // Optional parameters
+        loop: true,
+
+        // If we need pagination
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true,
+        },
+
+      });
+      </script>
+      <script src="./js/tabs.js"></script>
   </main>
 </body>
 </html>
